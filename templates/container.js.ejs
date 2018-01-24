@@ -1,0 +1,19 @@
+import React, { Component } from 'react'
+import { ScrollView, Text, View } from 'react-native'
+
+export default class <%= props.name %> extends Component {
+  render () {
+    return (
+      <View>
+        <ScrollView>
+
+          <View>
+            <Text>
+              This is a placeholder for <%= props.name %> container
+            </Text>
+          </View>
+        </ScrollView>
+      </View>
+    )
+  }
+}
