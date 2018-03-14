@@ -78,7 +78,10 @@ async function install (context) {
     // pass along the debug flag if we're running in that mode
     const debugFlag = parameters.options.debug ? '--debug' : ''
 
-    await system.spawn(`ignite add ${__dirname} ${debugFlag}`, { stdio: 'inherit' })
+    // boilerplate adds itself to get plugin.js/generators etc
+    // Could be directory, npm@version, or just npm name.  Default to passed in values
+    const boilerplate = parameters.options.b || parameters.options.boilerplate || 'ignite-ir-boilerplate'
+    await system.spawn(`ignite add ${boilerplate} ${debugFlag}`, { stdio: 'inherit' })
 
     // example of another plugin you could install
     // await system.spawn(`ignite add i18n ${debugFlag}`, { stdio: 'inherit' })
