@@ -84,7 +84,6 @@ async function install (context) {
         'devDependencies',
         merge(currentPackage.devDependencies, newPackageJson.devDependencies)
       ),
-      assoc('scripts', merge(currentPackage.scripts, newPackageJson.scripts)),
       merge(
         __,
         omit(['dependencies', 'devDependencies', 'scripts'], newPackageJson)
