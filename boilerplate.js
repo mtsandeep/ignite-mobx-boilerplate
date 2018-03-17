@@ -58,42 +58,42 @@ async function install (context) {
     quiet: true,
     directory: `${PLUGIN_PATH}/boilerplate`
   })
-
-  /**
-   * Merge the package.json from our template into the one provided from react-native init.
-   */
-  async function mergePackageJsons () {
-    // transform our package.json in case we need to replace variables
-    const rawJson = await template.generate({
-      directory: `${ignite.ignitePluginPath()}/boilerplate`,
-      template: 'package.json.ejs',
-      props: templateProps
-    })
-    const newPackageJson = JSON.parse(rawJson)
-
-    // read in the react-native created package.json
-    const currentPackage = filesystem.read('package.json', 'json')
-
-    // deep merge, lol
-    const newPackage = pipe(
-      assoc(
-        'dependencies',
-        merge(currentPackage.dependencies, newPackageJson.dependencies)
-      ),
-      assoc(
-        'devDependencies',
-        merge(currentPackage.devDependencies, newPackageJson.devDependencies)
-      ),
-      merge(
-        __,
-        omit(['dependencies', 'devDependencies', 'scripts'], newPackageJson)
-      )
-    )(currentPackage)
-
-    // write this out
-    filesystem.write('package.json', newPackage, { jsonIndent: 2 })
-  }
-  await mergePackageJsons()
+  //
+  // /**
+  //  * Merge the package.json from our template into the one provided from react-native init.
+  //  */
+  // async function mergePackageJsons () {
+  //   // transform our package.json in case we need to replace variables
+  //   const rawJson = await template.generate({
+  //     directory: `${ignite.ignitePluginPath()}/boilerplate`,
+  //     template: 'package.json.ejs',
+  //     props: templateProps
+  //   })
+  //   const newPackageJson = JSON.parse(rawJson)
+  //
+  //   // read in the react-native created package.json
+  //   const currentPackage = filesystem.read('package.json', 'json')
+  //
+  //   // deep merge, lol
+  //   const newPackage = pipe(
+  //     assoc(
+  //       'dependencies',
+  //       merge(currentPackage.dependencies, newPackageJson.dependencies)
+  //     ),
+  //     assoc(
+  //       'devDependencies',
+  //       merge(currentPackage.devDependencies, newPackageJson.devDependencies)
+  //     ),
+  //     merge(
+  //       __,
+  //       omit(['dependencies', 'devDependencies', 'scripts'], newPackageJson)
+  //     )
+  //   )(currentPackage)
+  //
+  //   // write this out
+  //   filesystem.write('package.json', newPackage, { jsonIndent: 2 })
+  // }
+  // await mergePackageJsons()
 
   spinner.stop()
 
