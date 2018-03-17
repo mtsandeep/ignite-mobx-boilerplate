@@ -27,7 +27,8 @@ class RootContainer extends Component {
         <Navigation
           navigation={addNavigationHelpers({
             dispatch: this.nav.dispatch,
-            state: this.nav.navigationState
+            state: this.nav.navigationState,
+            addListener: () => {}
           })}
         />
       </View>
