@@ -3,13 +3,13 @@ import DebugConfig from '../Config/DebugConfig'
 import React, { Component } from 'react'
 import { Provider } from 'mobx-react'
 
-import stores from '../MobX'
+import Stores from '../Stores'
 import RootContainer from './RootContainer'
 
 class App extends Component {
   render () {
     return (
-      <Provider {...stores}>
+      <Provider {...Stores}>
         <RootContainer />
       </Provider>
     )
