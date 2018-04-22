@@ -1,7 +1,22 @@
 {
   "presets": ["react-native"],
   "plugins":[
-      "transform-decorators-legacy"
+      "transform-decorators-legacy",
+      ["module-resolver", {
+        "extensions": [".js", ".ios.js", ".android.js"],
+        "alias": {
+          "App": "./App",
+          "Config": "./App/Config",
+          "Components": "./App/Components",
+          "Containers": "./App/Containers",
+          "Services": "./App/Services",
+          "Transforms": "./App/Transforms",
+          "Navigation": "./App/Navigation",
+          "I18n": "./App/I18n",
+          "Themes": "./App/Themes",
+          "Stores": "./App/Stores"
+        }
+      }]
   ],
   "env": {
     "production": {
