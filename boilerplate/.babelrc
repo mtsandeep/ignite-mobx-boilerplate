@@ -4,6 +4,7 @@
       "transform-decorators-legacy",
       ["module-resolver", {
         "extensions": [".js", ".ios.js", ".android.js"],
+        "cwd": "babelrc",
         "alias": {
           "App": "./App",
           "Config": "./App/Config",
